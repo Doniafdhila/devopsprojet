@@ -1,0 +1,156 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0d47a1;
+  margin: 0 0 4px;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  margin: 0 0 32px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+/* ── Stats Grid ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  text-decoration: none;
+  display: block;
+  border-radius: 16px;
+  animation: scaleIn 0.4s ease-out both;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.05s; }
+.stat-card:nth-child(2) { animation-delay: 0.1s; }
+.stat-card:nth-child(3) { animation-delay: 0.15s; }
+.stat-card:nth-child(4) { animation-delay: 0.2s; }
+
+.stat-card mat-card {
+  border-radius: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  border: 1px solid #e3f2fd;
+}
+
+.stat-card mat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(21, 101, 192, 0.15);
+}
+
+.stat-card mat-card:focus-visible {
+  outline: 3px solid #1565c0;
+  outline-offset: 2px;
+}
+
+.stat-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.stat-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.stat-icon-wrapper mat-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+}
+
+.students-bg    { background: linear-gradient(135deg, #1565c0, #42a5f5); }
+.departments-bg { background: linear-gradient(135deg, #0d47a1, #1976d2); }
+.courses-bg     { background: linear-gradient(135deg, #1e88e5, #64b5f6); }
+.enrollments-bg { background: linear-gradient(135deg, #0277bd, #4fc3f7); }
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-count {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a237e;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ── Info Section ── */
+.info-section {
+  animation: fadeInUp 0.5s 0.3s ease-out both;
+}
+
+.info-section mat-card {
+  border-radius: 16px;
+  border: 1px solid #e3f2fd;
+}
+
+.info-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1565c0;
+  margin: 0 0 8px;
+}
+
+.info-text {
+  color: #546e7a;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

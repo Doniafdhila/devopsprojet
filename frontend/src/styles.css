@@ -1,0 +1,91 @@
+/* Angular Material Theme — Azure Blue (M3) */
+@import "@angular/material/prebuilt-themes/azure-blue.css";
+
+/* Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* ── Google Material Icons (loaded in index.html via <link>) ── */
+
+/* ── Custom Properties ── */
+:root {
+  --primary-50:  #e3f2fd;
+  --primary-100: #bbdefb;
+  --primary-200: #90caf9;
+  --primary-300: #64b5f6;
+  --primary-400: #42a5f5;
+  --primary-500: #2196f3;
+  --primary-600: #1e88e5;
+  --primary-700: #1976d2;
+  --primary-800: #1565c0;
+  --primary-900: #0d47a1;
+
+  --bg-primary:   #ffffff;
+  --bg-secondary: #f5f9ff;
+  --bg-accent:    var(--primary-50);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+}
+
+/* ── Global Resets ── */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus visible (WCAG 2.4.7) ── */
+*:focus-visible {
+  outline: 3px solid var(--primary-700);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Smooth scrolling (accessibility: reduced motion preference) ── */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Angular Material overrides ── */
+.mat-mdc-snack-bar-container {
+  border-radius: 12px !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 20px !important;
+}
+
+.mat-mdc-table .mat-mdc-header-row {
+  background: var(--primary-50);
+}
+
+.mat-mdc-table .mat-mdc-header-cell {
+  color: var(--primary-900);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  border-radius: 12px;
+}
+
+/* ── Selection color ── */
+::selection {
+  background: var(--primary-200);
+  color: var(--primary-900);
+}
+

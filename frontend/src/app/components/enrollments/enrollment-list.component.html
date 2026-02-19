@@ -1,0 +1,67 @@
+<div class="list-container">
+  <div class="list-header">
+    <div>
+      <h1 class="page-title">Enrollments</h1>
+      <p class="page-subtitle">Manage student course enrollments</p>
+    </div>
+    <button mat-raised-button color="primary" (click)="openDialog()" class="add-btn" aria-label="Add new enrollment">
+      <mat-icon>add</mat-icon> Add Enrollment
+    </button>
+  </div>
+
+  <mat-form-field appearance="outline" class="filter-field">
+    <mat-label>Search enrollments</mat-label>
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Type to filter..." aria-label="Search enrollments">
+  </mat-form-field>
+
+  @if (isLoading()) {
+    <div class="loading-container" role="status"><mat-spinner diameter="48"></mat-spinner></div>
+  } @else {
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSource" matSort class="data-table" aria-label="Enrollments table">
+        <ng-container matColumnDef="idEnrollment">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.idEnrollment }}</td>
+        </ng-container>
+        <ng-container matColumnDef="student">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Student</th>
+          <td mat-cell *matCellDef="let row">{{ row.student?.firstName }} {{ row.student?.lastName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="course">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
+          <td mat-cell *matCellDef="let row"><span class="badge">{{ row.course?.name || '—' }}</span></td>
+        </ng-container>
+        <ng-container matColumnDef="enrollmentDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+          <td mat-cell *matCellDef="let row">{{ row.enrollmentDate | date:'mediumDate' }}</td>
+        </ng-container>
+        <ng-container matColumnDef="grade">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Grade</th>
+          <td mat-cell *matCellDef="let row">{{ row.grade ?? '—' }}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="status-chip" [class]="getStatusClass(row.status)">{{ row.status }}</span>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" matTooltip="Edit" (click)="openDialog(row)" aria-label="Edit enrollment"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" matTooltip="Delete" (click)="deleteItem(row)" aria-label="Delete enrollment"><mat-icon>delete</mat-icon></button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+        <tr class="mat-row no-data-row" *matNoDataRow>
+          <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+            <div class="empty-state"><mat-icon>search_off</mat-icon><p>No enrollments found</p></div>
+          </td>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Select page"></mat-paginator>
+    </div>
+  }
+</div>

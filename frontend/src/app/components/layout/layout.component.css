@@ -1,0 +1,101 @@
+/* ── Skip Link (visible only on focus — WCAG) ── */
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 10000;
+  padding: 12px 24px;
+  background: #0d47a1;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 50%, #1e88e5 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.logo-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* ── Sidenav ── */
+.sidenav-container {
+  flex: 1;
+}
+
+mat-sidenav {
+  width: 250px;
+  background: #ffffff;
+  border-right: 1px solid #e3f2fd;
+  padding-top: 8px;
+}
+
+mat-sidenav mat-nav-list a {
+  margin: 4px 8px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  color: #455a64;
+}
+
+mat-sidenav mat-nav-list a:hover {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+mat-sidenav mat-nav-list a.active-link {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #0d47a1;
+  font-weight: 600;
+}
+
+mat-sidenav mat-nav-list a.active-link mat-icon {
+  color: #1565c0;
+}
+
+/* ── Content ── */
+.content {
+  padding: 24px;
+  background: #f5f9ff;
+  min-height: calc(100vh - 64px);
+}
